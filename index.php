@@ -6,16 +6,23 @@
     <link rel="stylesheet" type="text/css" href="css/default.css" />
     <link rel="shortcut icon" href="<?=SITE_ICON?>" type="image/x-icon">
     <title><?=SITE_TITLE?></title>
+    <script type="text/javascript" src="js/jquery/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/site/common.js"></script>
 </head>
 
 <body>
     <div class="main ">
         <div class="header">
             <?=SITE_LOGO?>
+            <div class="annotate">
+                Разработка, сборка и установка систем контроля доступа, видеонаблюдения и пожароохранных систем.
+            </div>
         </div>
         <div class="content">
-            <form action="/" method="post" enctype="multipart/form-data">
+            <form id="devices" action="/" method="post" enctype="multipart/form-data">
                 Расстояние: <?=$SITE->getFiltersHtml('distance');?>
+                Тип устройств: <?=$SITE->getFiltersHtml('type');?>
+                <input class="frmReset" type="button" value="Сброс">
                 <br />
                 <br />
                 <div class="tools">

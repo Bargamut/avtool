@@ -36,12 +36,25 @@ hr {
     height: 100%;
     width: 900px;
     margin: 0px auto -70px;
-    padding: 5px 0px 0px;
     background-color: #ffffff;
     box-shadow: 0px 0px 15px 3px #333333;
+    -ms-box-shadow: 0px 0px 15px 3px #333333;
+    -moz-box-shadow: 0px 0px 15px 3px #333333;
+    -o-box-shadow: 0px 0px 15px 3px #333333;
+    -webkit-box-shadow: 0px 0px 15px 3px #333333;
 }
 
-.header { position: relative; }
+.header {
+    padding: 5px 0px;
+    margin: 0px 0px 30px;
+    position: relative;
+    box-shadow: 0px -5px 19px 0px #333333;
+    -ms-box-shadow: 0px -5px 19px 0px #333333;
+    -moz-box-shadow: 0px -5px 19px 0px #333333;
+    -o-box-shadow: 0px -5px 19px 0px #333333;
+    -webkit-box-shadow: 0px -5px 19px 0px #333333;
+}
+.header .annotate { width: 50%; bottom: 40px; right: 100px; position: absolute;}
 .content { padding: 5px 10px 15px; }
 .tools, .device { width: 48%; padding: 5px; border: 1px #aaaaaa solid; vertical-align: top; display: inline-block; // display: inline; // zoom: 1; }
 .tools h3 { margin: -5px -5px 5px; padding: 5px 5px 5px 15px; background: #E4B43A; }
