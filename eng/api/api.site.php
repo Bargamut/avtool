@@ -29,7 +29,7 @@ class Site{
 
     private function setFilters(&$farr) {
         foreach ($farr as $k => $v) {
-            if ($v != -1) {
+            if ($v != -1 && $v != '') {
                 switch ($k) {
                     case 'channel':
                         $this->filters['fields'][] = 'r.channels LIKE %%s%';
@@ -46,7 +46,11 @@ class Site{
                         $this->filters['fields'][] = 't.temp_max >= %d';
                         $this->filters['values'][] = $v;
                         break;
-                    case 'type': $this->filters['fields'][] = 'r.type LIKE %%s%'; break;
+                    case 'type':
+                        $this->filters['fields'][] = 'r.type LIKE %%s%';
+                        $this->filters['fields'][] = 't.type LIKE %%s%';
+                        $this->filters['values'][] = $v;
+                        break;
                     case 'videotype': $this->filters['fields'][] = 'r.video_type = %d'; break;
                     case 'voltage': $this->filters['fields'][] = "t.voltage LIKE %%s:like%"; break;
                     default: break;
