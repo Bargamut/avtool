@@ -45,7 +45,7 @@ hr {
 }
 
 .header {
-    padding: 5px 0px;
+    padding: 5px 0px 0px;
     margin: 0px 0px 30px;
     position: relative;
     box-shadow: 0px -5px 19px 0px #333333;
@@ -55,7 +55,16 @@ hr {
     -webkit-box-shadow: 0px -5px 19px 0px #333333;
 }
 .header .annotate { width: 50%; bottom: 40px; right: 100px; position: absolute;}
+.header .menu { padding: 0px 10px; margin: 0px; background-color: #F1E2BA; list-style: none; }
+.header .menu li { padding: 5px 10px; margin: 0px 5px 0px 0px; background-color: #E4B43A; cursor: pointer; display: inline-block; // display: inline; // zoom: 1; }
+.header .menu li:hover { background-color: #E2BE63; }
+.header .menu li a { color: #000000; text-decoration: none; }
+
 .content { padding: 5px 10px 15px; }
+.content .contacts, .content .consult { padding: 0px; margin: 0px 0px 10px; list-style: none; }
+.content .contacts li, .content .consult li { margin: 15px 0px; }
+.content .contacts li table td { padding: 0px 10px 0px 0px; }
+
 .tools, .device { width: 48%; padding: 5px; border: 1px #aaaaaa solid; vertical-align: top; display: inline-block; // display: inline; // zoom: 1; }
 .tools h3 { margin: -5px -5px 5px; padding: 5px 5px 5px 15px; background: #E4B43A; }
 .btnOk { width: 50%; margin: 5px auto; padding: 10px; background: #DEFFAD; border: 1px #78C419 solid; font-weight: bold; display: block; cursor: pointer; }

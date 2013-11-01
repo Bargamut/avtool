@@ -13,35 +13,30 @@
 <body>
     <div class="main ">
         <div class="header">
-            <?=SITE_LOGO?>
+            <a href="/"><?=SITE_LOGO?></a>
             <div class="annotate">
                 Разработка, сборка и установка систем контроля доступа, видеонаблюдения и пожароохранных систем.
             </div>
+            <?php include('menu.php');?>
         </div>
         <div class="content">
-            <form id="devices" action="/" method="post" enctype="multipart/form-data">
-                Расстояние: <?=$SITE->getFiltersHtml('distance');?>
-                Тип устройств: <?=$SITE->getFiltersHtml('type');?>
-                <input class="frmReset" type="button" value="Сброс">
-                <br />
-                <br />
-                <div class="tools">
-                    <h3>Передатчики</h3>
-                    Тип установки: <?=$SITE->getFiltersHtml('mounting');?><br />
-                    Температура: <?=$SITE->getFiltersHtml('temperature');?><br />
-                    Напряжение: <?=$SITE->getFiltersHtml('voltage');?>
-                </div>
-                <div class="tools">
-                    <h3>Приёмники</h3>
-                    Количество каналов: <?=$SITE->getFiltersHtml('channel');?><br />
-                    Настройка: <?=$SITE->getFiltersHtml('settingtype');?><br />
-                    Тип камеры: <?=$SITE->getFiltersHtml('videotype');?>
-                </div>
-                <input class="btnOk" type="submit" value="Ок" />
-            </form>
-            <?php $res = $SITE->getProductsHtml(); ?>
-            <div class="device"><?=$res['transmitters'];?></div>
-            <div class="device"><?=$res['recievers'];?></div>
+            <b>ООО "Big Brother"</b> - российский производитель электронного оборудования,
+            образована в августе 1998 года и в течение 14 лет успешно работает на
+            рынке технических средств безопасности. Основная сфера деятельности нашей компании - разработка
+            и производство оборудования для решения задач, связанных с проектированием,
+            монтажом и реализацией комплексных систем безопасности.
+            <br />
+            <br />
+            Все оборудование и программное обеспечение разрабатывается и производится специалистами фирмы Big Brother
+            <ul>
+                <li>Оборудование для передачи видеосигнала на большие расстояния по витой паре - видеотрансмиттеры AVT</li>
+                <li>Системы передачи видеоизображения при наличии высокого уровня электромагнитных помех</li>
+                <li>Системы тревожного оповещения</li>
+                <li>Системы проводной двусторонней передачи звука на большие расстояния</li>
+                <li>Системы контроля и управления доступом - сетевые и автономные</li>
+                <li>Системы платного доступа (билетные системы)</li>
+                <li>Системы автоматизированного проката</li>
+            </ul>
         </div>
         <div class="push"></div>
     </div>

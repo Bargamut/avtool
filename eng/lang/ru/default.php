@@ -6,7 +6,7 @@ define('SITE_LOGO'  ,   '<img src="/img/default/logo.png" align="top" />');
 
 define('DEBUG'      ,   'Сайт на реконструкции, скоро вернёмся!');
 
-define('DEVELOPERS' ,   'Петров А.Н. &copy; 2008 - ' . date('Y'));
+define('DEVELOPERS' ,   'Петров А.Н. &copy; ' . date('Y'));
 
 $ERRORS = array(
     400 => '<div>Ошибка 400:</div> Неверно составлен запрос',

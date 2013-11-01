@@ -1,11 +1,11 @@
 <?php
-class Site{
-    private $db;
-    private $filters = array(
+class Site {
+    protected $db;
+    protected $filters = array(
         'fields' => array(),
         'values' => array()
     );
-    private $FilterTables = array(
+    protected $FilterTables = array(
         'channel'       => 'channels',
         'distance'      => 'distances',
         'mounting'      => 'mountings',
@@ -14,7 +14,7 @@ class Site{
         'videotype'     => 'videotypes',
         'voltage'       => 'voltages'
     );
-    private $queryFields = array(
+    protected $queryFields = array(
         't.id as tid',
         't.name as tname',
         'r.id as rid',
@@ -27,7 +27,7 @@ class Site{
         $this->setFilters($farr);
     }
 
-    private function setFilters(&$farr) {
+    protected function setFilters(&$farr) {
         foreach ($farr as $k => $v) {
             if ($v != -1 && $v != '') {
                 switch ($k) {
@@ -92,6 +92,50 @@ class Site{
             $r = $this->db->query('SELECT * FROM ' . $this->FilterTables[$val]);
             $res = '<select name="' . $val . '">';
             $res .= '<option value="-1" ' . (!isset($_POST[$val]) || $_POST[$val] == -1 ? 'selected' : '') . '>Не важно</option>';
+
+            foreach ($r as $rv) {
+                $res .= '<option value="' . $rv['id'] . '" ' . ($_POST[$val] == $rv['id'] ? 'selected' : '') . '>' . $rv['value'] . '</option>';
+            }
+            $res .= '</select>';
+        }
+
+        return $res;
+    }
+}
+
+class AdminSite extends Site {
+    public function getProductsHtml() {
+        $res = array(
+            'transmitters'  => array(),
+            'recievers'     => array()
+        );
+
+        $this->filters['fields'] = (count($this->filters['fields']) > 0) ?
+            ' WHERE ' . join(' AND ', $this->filters['fields'])
+            :   '';
+
+        $r = $this->db->query('SELECT ' . join(', ', $this->queryFields) . ' FROM transmitters as t, recievers as r' . $this->filters['fields'], $this->filters['values']);
+        foreach ($r as $v) {
+            if (!in_array($v['tname'], $res['transmitters']))    { $res['transmitters'][]  = $v['tname']; }
+            if (!in_array($v['rname'], $res['recievers']))       { $res['recievers'][]     = $v['rname']; }
+        }
+
+        $res['transmitters']    = join('<br />', $res['transmitters']);
+        $res['recievers']       = join('<br />', $res['recievers']);
+
+        return $res;
+    }
+
+    public function getFiltersHtml($val) {
+        $res = '';
+
+        if ($val == 'temperature') {
+            $res .= 'min: <input name="min' . $val . '" value="' . $_POST['mintemperature'] . '" />' .
+                ' max: <input name="max' . $val . '" value="' . $_POST['maxtemperature'] . '" />';
+        }
+        if (array_key_exists($val, $this->FilterTables)) {
+            $r = $this->db->query('SELECT * FROM ' . $this->FilterTables[$val]);
+            $res = '<select name="' . $val . '">';
 
             foreach ($r as $rv) {
                 $res .= '<option value="' . $rv['id'] . '" ' . ($_POST[$val] == $rv['id'] ? 'selected' : '') . '>' . $rv['value'] . '</option>';
