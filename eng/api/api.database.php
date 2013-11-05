@@ -129,7 +129,7 @@ class JF_Database {
 
         if (preg_match('/^SELECT/i', $q)) {
             if (mysql_num_rows($r) == 1) {
-                $result[] = mysql_fetch_assoc($r);
+                $result = mysql_fetch_assoc($r);
             } else if (mysql_num_rows($r) > 1) {
                 while ($row = mysql_fetch_assoc($r)) {
                     $result[] = $row;

@@ -21,25 +21,7 @@
         </div>
         <div class="content">
             <form id="devices" action="/sort.php" method="post" enctype="multipart/form-data">
-                <b>Наименование устройства:</b> <input name="device" value="" /><br />
-                <br />
-                Расстояние: <?=$SITE->getFiltersHtml('distance');?>
-                Тип устройств: <?=$SITE->getFiltersHtml('type');?>
-                <input class="frmReset" type="button" value="Сброс">
-                <br />
-                <br />
-                <div class="tools">
-                    <h3>Передатчики</h3>
-                    Тип установки: <?=$SITE->getFiltersHtml('mounting');?><br />
-                    Температура: <?=$SITE->getFiltersHtml('temperature');?><br />
-                    Напряжение: <?=$SITE->getFiltersHtml('voltage');?>
-                </div>
-                <div class="tools">
-                    <h3>Приёмники</h3>
-                    Количество каналов: <?=$SITE->getFiltersHtml('channel');?><br />
-                    Настройка: <?=$SITE->getFiltersHtml('settingtype');?><br />
-                    Тип камеры: <?=$SITE->getFiltersHtml('videotype');?>
-                </div>
+                <?=$SITE->getProductsOpts($_GET['device'], $_GET['type']);?>
                 <input class="btnOk" type="submit" value="Ок" />
             </form>
         </div>
