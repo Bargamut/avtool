@@ -20,7 +20,7 @@
             <?php include('menu.php');?>
         </div>
         <div class="content">
-            <form id="devices" action="/sort.php" method="post" enctype="multipart/form-data">
+            <form id="devices" action="/admin/editdevice.php?type=<?=$_GET['type'];?>&device=<?=$_GET['device'];?>" method="post" enctype="multipart/form-data">
                 <?=$SITE->getProductsOpts($_GET['device'], $_GET['type']);?>
                 <input class="btnOk" type="submit" value="Ок" />
             </form>

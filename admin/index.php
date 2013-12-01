@@ -20,7 +20,7 @@
             <?php include('menu.php');?>
         </div>
         <div class="content">
-            <form id="devices" action="/sort.php" method="post" enctype="multipart/form-data">
+            <form id="devices" action="/admin/" method="post" enctype="multipart/form-data">
                 Расстояние: <?=$SITE->getFiltersHtml('distance');?>
                 Тип устройств: <?=$SITE->getFiltersHtml('type');?>
                 <input class="frmReset" type="button" value="Сброс">

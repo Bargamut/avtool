@@ -116,8 +116,10 @@ class AdminSite extends Site {
 
         $r = $this->db->query('SELECT ' . join(', ', $this->queryFields) . ' FROM transmitters as t, recievers as r' . $this->filters['fields'], $this->filters['values']);
         foreach ($r as $v) {
-            if (!in_array($v['tname'], $res['transmitters']))    { $res['transmitters'][]  = $v['tname']; }
-            if (!in_array($v['rname'], $res['recievers']))       { $res['recievers'][]     = $v['rname']; }
+            $deviceLink = '<a href="editdevice.php?type=t&device=' . $v['tid'] . '">' . $v['tname'] . '</a>';
+            if (!in_array($deviceLink, $res['transmitters']))   { $res['transmitters'][]  = $deviceLink; }
+            $deviceLink = '<a href="editdevice.php?type=t&device=' . $v['rid'] . '">' . $v['rname'] . '</a>';
+            if (!in_array($deviceLink, $res['recievers']))      { $res['recievers'][]     =  $deviceLink; }
         }
 
         $res['transmitters']    = join('<br />', $res['transmitters']);

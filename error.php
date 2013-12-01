@@ -15,14 +15,6 @@
 <div class="main ">
     <div class="header">
         <?=SITE_LOGO?>
-        <div id="login_auth">
-            <?php
-            $userinfo['logined'] ?
-                $htmlMAuth = $USER->userTab($userinfo['nickname'])
-            :   $htmlMAuth = $USER->mAuthForm();
-            echo $htmlMAuth;
-            ?>
-        </div>
     </div>
     <div class="content">
         <div class="error">
